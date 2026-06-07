@@ -365,13 +365,13 @@ section {
 /* --- FUENTES --- */
 @font-face {
   font-family: 'Cocogoose';
-  src: url('../julio/Cocogoose-Pro-Light-trial.ttf') format('truetype');
+  src: url('Cocogoose-Pro-Light-trial.ttf') format('truetype');
   font-weight: normal;
 }
 
 @font-face {
   font-family: 'Cocogoose';
-  src: url('../julio/Cocogoose-Pro-Darkmode-trial.ttf') format('truetype');
+  src: url('Cocogoose-Pro-Darkmode-trial.ttf') format('truetype');
   font-weight: bold;
 }
 
