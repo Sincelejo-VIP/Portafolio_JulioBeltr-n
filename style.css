@@ -1,0 +1,420 @@
+/* --- CONFIGURACIÓN GENERAL --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cocogoose', sans-serif;
+}
+
+body {
+  background: #2f5f73;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* --- HEADER --- */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: #f5efe6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  z-index: 1000;
+}
+
+nav a {
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #2f5f73;
+}
+
+/* --- SECCIONES --- */
+section {
+  padding: 120px 80px;
+}
+
+/* --- SECCIÓN INICIO (HERO) - ANIMACIÓN PROFESIONAL --- */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: center;
+  gap: 50px;
+  min-height: 100vh;
+  overflow: hidden; /* Mantiene la animación dentro de los límites */
+
+  /* Fondo Cinematográfico: Capa oscura + Imagen */
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+              url("../imagenes/img11.png"); 
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Animación de 25 segundos para que sea elegante y sutil */
+  animation: bannerCinematico 25s infinite alternate ease-in-out;
+  will-change: transform;
+}
+
+/* ANIMACIÓN: Paneo diagonal + Zoom + Cambio de Brillo */
+@keyframes bannerCinematico {
+  0% {
+    transform: scale(1.1) translateX(-2%) translateY(-2%);
+    filter: brightness(0.8);
+  }
+  50% {
+    filter: brightness(1.1); /* Simula iluminación natural */
+  }
+  100% {
+    transform: scale(1.2) translateX(2%) translateY(2%);
+    filter: brightness(0.8);
+  }
+}
+
+.hero img {
+  width: 300px;
+  border-radius: 15px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.hero-text {
+  max-width: 500px;
+  color: white;
+  text-align: left;
+  margin-top: 350px; 
+  position: relative;
+  z-index: 2;
+  /* Animación de entrada para el texto */
+  animation: entradaTexto 2s ease-out;
+}
+
+.hero-text h1 {
+  font-size: 50px;
+  letter-spacing: 2px;
+}
+
+.hero-text p {
+  margin-top: 15px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Efecto de enfoque y subida suave para el texto al cargar */
+@keyframes entradaTexto {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* --- BANNER CARRUSEL --- */
+.banner-carousel {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 70px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.banner-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: scale(1.03);
+}
+
+.banner-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.banner-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.banner-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 50px 50px 40px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.82));
+  color: white;
+}
+
+.banner-tag {
+  display: inline-block;
+  background: #2f5f73;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 30px;
+  margin-bottom: 12px;
+}
+
+.banner-overlay h2 {
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.banner-overlay p {
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+.banner-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  font-size: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-btn:hover { background: rgba(255,255,255,0.3); }
+.banner-prev { left: 20px; }
+.banner-next { right: 20px; }
+
+.banner-dots {
+  position: absolute;
+  bottom: 18px;
+  right: 50px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.3);
+}
+
+/* --- TÍTULOS --- */
+.title {
+  font-size: 40px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* --- CARRUSELES --- */
+.carousel-container {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.carousel {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.carousel-item {
+  min-width: 280px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5efe6;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.carousel-item:hover {
+  transform: scale(1.1) translateY(-5px);
+  z-index: 5;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* --- CONTACTO --- */
+.contact {
+  background: #f5efe6;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.icon-gmail { background: #ea4335; }
+.icon-instagram { background: #E1306C; }
+.icon-facebook { background: #1877F2; }
+.icon-whatsapp { background: #25D366; }
+
+.social-icons a:hover {
+  transform: translateY(-5px);
+}
+
+/* --- MODAL --- */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* --- FUENTES --- */
+@font-face {
+  font-family: 'Cocogoose';
+  src: url('../julio/Cocogoose-Pro-Light-trial.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Cocogoose';
+  src: url('../julio/Cocogoose-Pro-Darkmode-trial.ttf') format('truetype');
+  font-weight: bold;
+}
+
+/* --- REGLAS RESPONSIVE --- */
+@media (max-width: 768px) {
+  header { padding: 15px 30px; }
+  .menu-toggle { display: block; }
+
+  nav {
+    display: none; 
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #f5efe6;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  nav.active { display: flex; }
+  nav a { margin: 15px 0; display: block; }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 140px 20px 40px 20px;
+    gap: 20px;
+    /* Animación más simple para mejor rendimiento en móvil */
+    animation: bannerCinematico 30s infinite alternate ease-in-out;
+  }
+
+  .hero img { width: 220px; }
+  .hero-text { margin-top: 0; max-width: 100%; }
+  .hero-text h1 { font-size: 32px; }
+  .carousel-btn { display: none; }
+  .carousel { overflow-x: auto; }
+  section { padding: 60px 20px; }
+
+  .banner-carousel { height: 280px; border-radius: 12px; }
+  .banner-overlay { padding: 30px 20px 25px; }
+  .banner-overlay h2 { font-size: 22px; }
+  .banner-overlay p { font-size: 13px; }
+  .banner-prev { left: 10px; }
+  .banner-next { right: 10px; }
+  .banner-dots { right: 20px; }}
